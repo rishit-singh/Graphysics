@@ -7,51 +7,92 @@
 #include <algorithm>
 #include <stack>
 #include <stdio.h>
+#include "DSnAlgo/ds.h"
 
 typedef struct {
-    int X, Y;
-} Ordinate;
+    double X, Y;
+} Coordinates;
 
 typedef struct {
-    int X, Y;
+    Coordinates coordinates;
+    bool plot;
 } Point;
 
 
 using namespace std;
+using namespace DataStructures;
 
 namespace Cartesian2D
 {
-    stack < stack<Ordinate> > AllocatedPixels; //stack that stores stacks
-
     class Plane
     {
     public:
-        stack <Ordinate> PlanePixels;
+        stack <Point> PlanePixels;
 
-        Plane(Ordinate ordinate)
+        Plane(Coordinates ordinate)
         {
             Ordinate temp; //for temporarlily storing points
-            for (int y = 0; y < ordinate.Y; y++)
-                for (int x = 0; x <ordinate.X; x++)
+            for (int y = 0; y <= ordinate.coordinates.Y; y++)
+            {    
+                for (int x = 0; x <= ordinate.X; x++)
                 {
                     temp.X = x;
                     temp.Y = y;
                 }
-                    PlanePixels.push(temp);
-            AllocatedPixels.push(PlanePixels);
+
+                PlanePixels.push(temp);
+            }
+            Planes.push(this);
+            this.Paint(); //initial paint
         }
 
-        void ShowTrace(stack <Ordinate> plane)
+        void ShowTrace()
         {
             char TraceChar = '.';
-            for (int y = 0; y < plane.size(); y++)
-                for(int x = 0; x < y; x++)
-                    printf("%c", TraceChar);
+            for (int y = 0; y < PlanePixels.size(); y++)
+                Plot(*(DataStructures::Stack::ToArray(PlanePixels) + y));
+
+            this.Paint();
         }
-    
-        void HideTrace()
+ 
+        void Plot(Point p)
         {
+            p.plot = true;
+        }
+
+        void Paint()
+        {
+            int* array;
+            for (int x = 0; x < PlanePixels.size(); x++)
+                if (*(array = Stack::ToArray(PlanePixels) + x).Plot)
+                    printf(".");
 
         }
     };
-};
+    
+    stack<Plane*> Planes; //stack for storing Planes
+
+    class Constructors
+    {
+    public:
+        static Coordinates GenerateCoordinates(double x, double y) //custom constructor for Coordinates struct
+        {
+            Coordinates c;
+
+            c.X = x;
+            c.Y = y;
+
+            return c;
+        }
+
+        static Point GeneratePoint(double x, double y)
+        {
+            Point p;
+
+            p.coordinates.X = x;
+            p.coordinates.Y = y;
+
+            return p;
+        }
+    };
+};  
