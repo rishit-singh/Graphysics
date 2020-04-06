@@ -1,6 +1,12 @@
+#pragma once
+
+#define ENVIRONMENT_H
+#define ENVIRONMENT_H
+
 #include <iostream>
 #include <stdlib.h>
 #include <string>
+
 namespace Environment
 {
 	typedef struct PhysicalProperties {
@@ -12,22 +18,24 @@ namespace Environment
 	public:
 		char* Name;
 		PhysicalProperties physicalProperties;
+
 		System(PhysicalProperties properties)
 		{
 			Name = (char*) malloc(sizeof(char) * 1000);
 			
 			strcpy("", Name);
-			physicalProperties = {
+			this->physicalProperties = {
 				properties.Pressure, properties.Temprature;
 			};
 		}
+
 		System(float pressure, float temprature)
 		{
 			Name = (char*) malloc(sizeof(char) * 1000);
 
   			strcpy("", Name);
 			
-			physicalProperties = {
+			this->physicalProperties = {
 				pressure, temprature
 			};
 		}
@@ -38,7 +46,7 @@ namespace Environment
 		
             strcpy(name, Name);
                         
-			physicalProperties = {
+			this->physicalProperties = {
                 properties.Pressure, properties.Temprature;
             };
         }
@@ -49,7 +57,7 @@ namespace Environment
 
             strcpy(name, Name);
 
-            physicalProperties = {
+            this->physicalProperties = {
                 pressure, temprature
             };
         }

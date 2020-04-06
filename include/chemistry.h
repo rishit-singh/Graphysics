@@ -8,10 +8,40 @@
 #include <string>
 #include "environment.h"
 
+namespace ChemistyBasics
+{
+	class Element
+	{
+	public:
+		enum ElementType
+		{
+
+		};
+
+		enum Existents
+		{
+
+		};
+	};
+	
+	class Compound
+	{
+	public:
+		stack <Element>* Composition;
+
+		Compound()
+		{
+
+		}
+	};
+};
+
 namespace Organic 
 { 
 	class Benzene
-	{  };
+	{  
+		
+	};
 };
 
 namespace InOrganic 
@@ -27,7 +57,15 @@ namespace InOrganic
 	class GasLaws
 	{	
 	public:
-		static int Boyle(Gas gas,Environment::System system)
+		enum GasLaw
+		{
+			Boyle, 
+			Charles, 
+			GayLussac,
+			IdealGas
+		}
+
+		static bool ObeysLaws(Gas gas,Environment::System system, )
 		{
 			bool applicable = (gas.Volume != NULL || (system.physicalProperties.Pressure != NULL) ? true : false;
 			
