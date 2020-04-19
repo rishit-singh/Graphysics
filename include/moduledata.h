@@ -15,4 +15,4 @@ using namespace std;
 using namespace Cartesian2D;
 
 
-stack<struct Plane>* Planes = new stack<struct Plane>();
+stack<Plane>* Planes = new stack<Plane>();

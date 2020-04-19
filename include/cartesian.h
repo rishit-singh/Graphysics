@@ -8,65 +8,44 @@
 #include <stack>
 #include <stdio.h>
 #include "DSnAlgo/ds.h"
-#include "moduledata.h"
-
+#include "cartesianobj.h"
 
 using namespace std;
 using namespace DataStructures;
-using namespace CartesianObjects;
+using namespace CartesianObjects2D;
 
 namespace Cartesian2D
 {
-
-#include "moduledata.h" //to get Plans Stack
-
     class Plane
     {
     public:
-        stack<struct Point>* PlanePixels = new stack <struct Point>();
+        stack<Point>* PointStack;
+        
+        Point** Points;
 
-        Plane(struct Coordinates ordinate)
+        Plane()
         {
-            struct Point* temp = new Point(Coordinates(0, 0), false); //for temporarlily storing points
-            
-            for (int y = 0; y <= ordinate.Y; y++)
-            {       
-                for (int x = 0; x <= ordinate.X; x++)
-                {
-                    temp->coordinates.X = x;
-                    temp->coordinates.Y = y;
-                }
-
-                PlanePixels->push(temp);
-            }
-            
-            Planes->push(this);
-            this->Paint(); //initial paint
         }
 
-        void ShowTrace()
+        Plane(Point** points) //array of points
         {
-            char TraceChar = '.';
-  
-            for (int y = 0; y < PlanePixels->size(); y++)
-                Plot(*(DataStructures::Stack::ToArray(PlanePixels) + y));
+            CartesianPoint = new stack<Point>();
 
-            this->Paint();
-        }
- 
-        void Plot(struct Point* p)
+            for (int x = 0; x < sizeof(points) / sizeof(Point*); x++)
+                this->Points->push(*(points + x));
+			
+			Point** temp = Stack::ToArray(this->Points);
+
+            this->Points = (Point*)malloc(sizeof(Point*) * (sizeof(temp) + 1)); // +1 for the value recieved by next contructor i.e. Plane(Point* point)
+			
+			this->Points = temp;  
+        }  
+};
+        Plane(Point* point)
         {
-            p->Plot = true;
-            
-        }
+           int PointArrayLength = sizeof(this->Points) / sizeof(Point*); //temporary int for storing tne length of Points array.
 
-        void Render()
-        {
-            int* array;
-
-            for (int x = 0; x < PlanePixels->size(); x++)
-                if (*(array = Stack::ToArray(&PlanePixels) + x).Plot)
-                    printf(".");
+           this->Points->push(point);
         }
     };
-};  
+};
