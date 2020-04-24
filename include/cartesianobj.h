@@ -29,24 +29,31 @@ namespace CartesianObjects2D
     class Point
     {
     public:
-        Coordinate* Coordinates; //coordinates
-        bool Plotted; //represents the status of the point
+        enum PlotStatus
+        {
+            Plotted, 
+            Hidden
+        };
 
-        Point(Coordinate* coordinates, bool plotted)
+        Coordinate* Coordinates; //coordinates
+        Point::PlotStatus plotStatus; 
+    
+        Point(Coordinate* coordinates,  Point::PlotStatus plotstatus)
         {
             this->Coordinates = coordinates;
-            this->Plotted = plotted;
+            this->PlotStatus = plotstatus;
         }
         
         Point(Coordinate* coordinates)
         {
             this->Coordinates = coordinates;
-            this->Plotted = false;
+            this->PlotStatus = plotStatus;
         }
 
         Point()
-        { //a new point at the origin
-            this->Plotted = false;
+        { //a new point at the origin 
+            this->Coordinates = new Coordinate();
         }
     };
 };
+
