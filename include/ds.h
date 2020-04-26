@@ -15,19 +15,28 @@ namespace DataStructures
     class Stack
     {
     public:
-        static Point* ToArray(stack<Point> points)
+        static Point** ToArray(stack<Point*>* points)
         {
-            int stackSize = points.size(); //stack size temp 
+            int stackSize = points->size(); //stack size temp 
     
-            Point* pointsArray = new Point[stackSize];//(Point**)malloc(sizeof(Point*) * stackSize);
+            Point** pointsArray = (Point**)malloc(sizeof(Point*) * stackSize); //new Point*[stackSize];//(Point**)malloc(sizeof(Point*) * stackSize);
 
     	    for (int x = 0; x < stackSize; x++)
             {
-    		*(pointsArray + x) = points.top(); //popped value is stored in the array.
-                points.pop();
+    	        pointsArray[x] = points->top(); //popped value is stored in the array.
+                points->pop();
             }
             
-            return pointsArray; 
+            return pointsArray;
  	    }
+    };
+
+    class Array
+    {
+    public:
+        static int GetLength(Point** array)
+        {
+            return sizeof(array) / sizeof(Point*);  
+        }
     };
 };

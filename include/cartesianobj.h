@@ -14,12 +14,12 @@ namespace CartesianObjects2D
         int X, Y; //coordinates
 
         Coordinate()
-        {
-            // this->X = 0;
-            // this->Y = 0;
-        } //null constructor
+        { 
+            this->X = 0;
+            this->Y = 0;
+        }
         
-        Coordinate(int x, int y)
+        Coordinate(int x, int y) 
         {
             this->X = x;
             this->Y = y;
@@ -41,13 +41,13 @@ namespace CartesianObjects2D
         Point(Coordinate* coordinates,  Point::PlotStatus plotstatus)
         {
             this->Coordinates = coordinates;
-            this->PlotStatus = plotstatus;
+            this->plotStatus = plotstatus;
         }
         
         Point(Coordinate* coordinates)
         {
             this->Coordinates = coordinates;
-            this->PlotStatus = plotStatus;
+            this->plotStatus = plotStatus;
         }
 
         Point()
