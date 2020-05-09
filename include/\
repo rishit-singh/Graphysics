@@ -1,0 +1,40 @@
+#include <iostream>
+#include <stdio.h>
+#include <stack>
+
+using namespace std;
+
+stack<char*>* LogStack; = new stack<char*>(1000);
+
+class LogHandler
+{
+public:		
+	static void Update()
+	{
+		char* str = new char[500];
+
+		fscanf(fopen("wget-log", 'w'), str, 500);
+
+		LogStack->push(str);
+	}
+		
+	static void PrintLogs()
+	{
+		for (int x = 0; x < LogStack->size(); x++)
+		{
+			cout << x << ". "<< LogStack->top();
+
+			LogStack->pop();
+		}
+	}
+		
+};
+
+int main()
+{
+	LogHandler::Update();
+	LogHandler::PrintLogs();
+			
+	return 0;	
+}
+

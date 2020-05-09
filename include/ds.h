@@ -31,9 +31,30 @@ namespace DataStructures
  	    }
     };
 
+    class CPPVector
+    {
+    public: 
+        static Point** ToArray(vector<Point*>* point_vector)
+        {
+            int vectorSize = point_vector->size(); 
+
+            Point** PointArray = new Point*[vectorSize];
+
+            for (int x = 0; x < vectorSize; x++)
+                PointArray[x] = point_vector->at(x);
+
+            return PointArray;
+        }
+    };
+
     class Array
     {
     public:
+        static int GetLength(int array[])
+        {
+            return sizeof(array) / sizeof(array[0]);
+        }
+
         static int GetLength(Point** array)
         {
             return sizeof(array) / sizeof(Point*);  

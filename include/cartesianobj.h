@@ -37,11 +37,17 @@ namespace CartesianObjects2D
 
         Coordinate* Coordinates; //coordinates
         Point::PlotStatus plotStatus; 
-    
+
         Point(Coordinate* coordinates,  Point::PlotStatus plotstatus)
         {
             this->Coordinates = coordinates;
             this->plotStatus = plotstatus;
+        }
+        
+        Point(Coordinate* coordinates,  bool statusBool)
+        {
+            this->Coordinates = coordinates;
+            this->plotStatus = (statusBool) ? Point::PlotStatus::Plotted : Point::PlotStatus::Hidden;
         }
         
         Point(Coordinate* coordinates)
@@ -57,3 +63,4 @@ namespace CartesianObjects2D
     };
 };
 
+        
