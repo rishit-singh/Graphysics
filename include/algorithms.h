@@ -18,7 +18,7 @@ using namespace Cartesian2D;
 
 namespace Algorithms
 {
-	class Random
+	class RandomAlgos
 	{
 	public:
 		static void Swap(Point* point, Point* point1)
@@ -40,6 +40,8 @@ namespace Algorithms
 			// point = point1;
 			// point1 = temp;
 		}
+	    
+		static int GetIndex(Point* point, Point** pointArray, int arrayLength);
 
 		static int PointCmp(Point* point, Point* point1)
 		{
@@ -61,7 +63,7 @@ namespace Algorithms
 			for (int x = 0; x < len; x++)
 				for (int y = 0;  y < len - x - 1; x++)	
 					if (array[y]->Coordinates->Y > array[y + 1]->Coordinates->Y)
-						Random::Swap(array[y], array[y + 1]);
+						RandomAlgos::Swap(array[y], array[y + 1]);
 						
 		}
 		
@@ -70,7 +72,7 @@ namespace Algorithms
 			for (int x = 0; x < len - 1; x++)
 				for (int y = 0;  y < len - x - 1; y++)
 					if (array[y] > array[y + 1])
-						Random::Swap(array + y, array + (y + 1));	
+						RandomAlgos::Swap(array + y, array + (y + 1));	
 		} 
 	};
 
@@ -92,13 +94,13 @@ namespace Algorithms
 
 			if (end >= start)
 			{
-				if (!Random::PointCmp(array[mid], val))
+				if (!RandomAlgos::PointCmp(array[mid], val))
 					return mid;
 
-				if (Random::PointCmp(array[mid],val) == -1)
-					return BinarySearch(val, array, mid + 1, end);
+				if (RandomAlgos::PointCmp(array[mid],val) == -1)
+					return Search::BinarySearch(val, array, mid + 1, end);
 			
-				return BinarySearch(val, array, start, mid - 1);
+				return Search::BinarySearch(val, array, start, mid - 1);
 			}
 			return -1;
 		}
@@ -124,4 +126,10 @@ namespace Algorithms
 			return -1;
 		}
 	};
+
+	int RandomAlgos::GetIndex(Point* point, Point** pointArray, int arrayLength)
+    {
+        	return Search::BinarySearch(point, pointArray, 0, arrayLength);
+    } 
+
 };
