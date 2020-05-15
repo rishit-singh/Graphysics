@@ -61,11 +61,11 @@ using namespace Algorithms;
 			this->PointVector = new vector<Point*>();
 
 			for (int x = 0; x < points->size(); x++)
-				this->PointVector->push_back(points->at(x));
+			 	this->PointVector->push_back(points->at(x));
+		
+			// this->Points = CPPVector::ToArray(points); // +1 for the value recieved by next contructor i.e. Plane(Point* point)
 
-			this->Points = CPPVector::ToArray(points); // +1 for the value recieved by next contructor i.e. Plane(Point* point)
-			
-			Sort::BubbleSort(this->Points, (int)this->PointVector->size());
+			// Sort::BubbleSort(this->Points, (int)this->PointVector->size());
 		}  
 		
 		Plane(Point* point)	
