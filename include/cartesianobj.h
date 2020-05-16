@@ -35,7 +35,7 @@ namespace CartesianObjects2D
             Hidden
         };
 
-        Coordinate* Coordinates; //coordinates
+        Coordinate* Coordinates; //coordinates, Poin (x, y)
         Point::PlotStatus plotStatus; 
 
         Point(Coordinate* coordinates,  Point::PlotStatus plotstatus)

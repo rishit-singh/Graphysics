@@ -7,6 +7,8 @@
 #include <stdlib.h>
 #include <string>
 
+using namespace std;
+
 namespace Environment
 {
 	typedef struct PhysicalProperties {
@@ -21,9 +23,7 @@ namespace Environment
 
 		System(PhysicalProperties properties)
 		{
-			Name = (char*) malloc(sizeof(char) * 1000);
-			
-			strcpy("", Name);
+			Name = new char[100];
 			this->physicalProperties = {
 				properties.Pressure, properties.Temprature;
 			};

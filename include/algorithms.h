@@ -41,7 +41,7 @@ namespace Algorithms
 			// point1 = temp;
 		}
 	    
-		static int GetIndex(Point* point, Point** pointArray, int arrayLength);
+		static int GetIndex(Point* point, vector<Point*>* pointArray, int arrayLength);
 
 		static int PointCmp(Point* point, Point* point1)
 		{
@@ -52,7 +52,7 @@ namespace Algorithms
 				return 1;
 				
 			return -1;
-		}
+		} 	
 	};
 
 	class Sort
@@ -88,16 +88,17 @@ namespace Algorithms
 			return -1;
 		}
 
-		static int BinarySearch(Point* val, Point** array, int start, int end)
+		static int BinarySearch(Point* val, vector<Point*>* array, int start, int end)
 		{
+
 			int mid = start + end - start / 2;
 
 			if (end >= start)
 			{
-				if (!RandomAlgos::PointCmp(array[mid], val))
+				if (!RandomAlgos::PointCmp(array->at(mid), val))
 					return mid;
 
-				if (RandomAlgos::PointCmp(array[mid],val) == -1)
+				if (RandomAlgos::PointCmp(array->at(mid),val) == -1)
 					return Search::BinarySearch(val, array, mid + 1, end);
 			
 				return Search::BinarySearch(val, array, start, mid - 1);
@@ -127,9 +128,9 @@ namespace Algorithms
 		}
 	};
 
-	int RandomAlgos::GetIndex(Point* point, Point** pointArray, int arrayLength)
+	int RandomAlgos::GetIndex(Point* point, vector<Point*>* pointArray, int arrayLength)
     {
-        	return Search::BinarySearch(point, pointArray, 0, arrayLength);
+        return Search::BinarySearch(point, pointArray, 0, arrayLength);
     } 
 
 };

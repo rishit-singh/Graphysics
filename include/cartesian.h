@@ -21,7 +21,7 @@ using namespace CartesianObjects2D;
 
 namespace Cartesian2D
 {
-#include "algorithms.h"
+#include "algorithms.h"	//included here to prevent unwanted recursion of file inclusion.
 
 using namespace Algorithms;
 	class Plane
@@ -32,13 +32,15 @@ using namespace Algorithms;
 
         vector<Point*>* GetPlotted()
         {
+			cout << "Vector size: " << this->PointVector->size(); 
+
 			vector<Point*>* plottedStack = new vector<Point*>();
 
             for (int x = 0; x < this->PointVector->size(); x++)
-				if (this->Points[x]->plotStatus == Point::Plotted)
-					plottedStack->push_back(this->Points[x]);
+				if (this->PointVector->at(x)->plotStatus == Point::Plotted)
+					plottedStack->push_back(this->PointVector->at(x));
 
-			return plottedStack;	
+			return plottedStack;
         }
 
 
@@ -62,7 +64,7 @@ using namespace Algorithms;
 
 			for (int x = 0; x < points->size(); x++)
 			 	this->PointVector->push_back(points->at(x));
-		
+	
 			// this->Points = CPPVector::ToArray(points); // +1 for the value recieved by next contructor i.e. Plane(Point* point)
 
 			// Sort::BubbleSort(this->Points, (int)this->PointVector->size());
