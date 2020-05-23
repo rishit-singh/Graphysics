@@ -4,7 +4,6 @@
 #include "cartesian.h"
 #include "cartesianobj.h"
 #include "ds.h"
-#include "algorithms.h"
 
 using namespace std;
 using namespace Cartesian2D;
@@ -31,16 +30,16 @@ public:
 		return (Search::BinarySearch(point, pointArray, 0, pointArray->size()) <= -1) ? false : true;
 	}
 
-	// static bool IsCoincident(Point* point, Point** pointArray, int arrayLength)
-	// {
-	// 	return (Search::BinarySearch(point, pointArray, 0, arrayLength) <= -1) ? false : true;
-	// }
+		// static bool IsCoincident(Point* point, Point** pointArray, int arrayLength)
+		// {
+		// 	return (Search::BinarySearch(point, pointArray, 0, arrayLength) <= -1) ? false : true;
+		// }
 
 	static bool Plot(Plane* plane)
 	{
 		wchar_t* DrawingChars[] = {
 			L"\n   \u2191	",
-			L"<\u2581",		
+			L"<	\u2581",		
 			L"\u25AA",
 			L"\u2595",
 			L"\u2581"
@@ -65,13 +64,15 @@ public:
 				if (!y && x == 11)
 					wcout << DrawingChars[1];
 				
+				wcout << "GetPlotted() val: ";//;<< plane->GetPlotted();
+
 				if (IsCoincident(new Point(new Coordinate(x, y)), plane->GetPlotted()))
 					wcout << DrawingChars[(int)DebugPlot::Point_Dot];
 				else
 					wcout << " ";
 			}
 		}
-
+ 
 		wcout << "\n";
 
 		return false;
@@ -105,7 +106,7 @@ public:
 			wcout << "\nStatus: ";
 			cin >> statusTemp;
 
-			if (statusTemp >= 0 || statusTemp <= 1)
+			if (statusTemp >= 0 && statusTemp <= 1)
 				pointTemp->plotStatus = Point::Plotted;
 			else
 			{

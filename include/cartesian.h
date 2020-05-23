@@ -8,21 +8,16 @@
 #include <stack>
 #include <stdio.h>
 #include <vector>
-#include "ds.h"
+#include "ds.h"	
 #include "cartesianobj.h"
-
 
 using namespace std;
 using namespace DataStructures;
 using namespace CartesianObjects2D;
 
-
-
-
 namespace Cartesian2D
 {
-#include "algorithms.h"	//included here to prevent unwanted recursion of file inclusion.
-
+#include "algorithms.h"//included here to prevent unwanted recursion of file inclusion.
 using namespace Algorithms;
 	class Plane
 	{
@@ -42,7 +37,6 @@ using namespace Algorithms;
 
 			return plottedStack;
         }
-
 
 		Plane()
 		{

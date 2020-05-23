@@ -2,22 +2,23 @@
 
 #define ALGORITHMS_H
 
+#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
-#include <iostream>
 #include <vector>
 #include "ds.h"
-#include "cartesian.h"
 #include "cartesianobj.h"
 
 
-using namespace std;
 using namespace DataStructures;
 using namespace CartesianObjects2D;
-using namespace Cartesian2D;
+using namespace std;
+
 
 namespace Algorithms
 {
+#include "cartesian.h"
+using namespace Cartesian2D;
 	class RandomAlgos
 	{
 	public:
@@ -74,6 +75,17 @@ namespace Algorithms
 					if (array[y] > array[y + 1])
 						RandomAlgos::Swap(array + y, array + (y + 1));	
 		} 
+
+		static void BubbleSort(vector<Point*>* pointVector)
+		{
+			int len;
+
+			for (int x = 0; x < (len = pointVector->size()) - 1; x++)
+				for (int y = 0; y <  len -  x - 1; y++)
+					if (RandomAlgos::PointCmp(pointVector->at(y), pointVector->at(y + 1)) >= 1)
+						RandomAlgos::Swap(pointVector->at(y), pointVector->at(y + 1));
+
+		}
 	};
 
 	class Search
@@ -90,7 +102,6 @@ namespace Algorithms
 
 		static int BinarySearch(Point* val, vector<Point*>* array, int start, int end)
 		{
-
 			int mid = start + end - start / 2;
 
 			if (end >= start)

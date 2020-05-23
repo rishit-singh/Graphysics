@@ -7,6 +7,7 @@ using namespace std;
 using namespace Cartesian2D;
 using namespace CartesianObjects2D;
 using namespace Algorithms;
+
 int main()
 {
 	Point* points[] = {
