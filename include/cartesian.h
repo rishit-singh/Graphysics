@@ -4,7 +4,6 @@
 #define CARTESIAN_H
 
 #include <iostream>
-#include <algorithm>
 #include <stack>
 #include <stdio.h>
 #include <vector>
@@ -19,6 +18,7 @@ namespace Cartesian2D
 {
 #include "algorithms.h"//included here to prevent unwanted recursion of file inclusion.
 using namespace Algorithms;
+
 	class Plane
 	{
 	public:
@@ -72,7 +72,8 @@ using namespace Algorithms;
 
 		   	this->Points = CPPVector::ToArray(this->PointVector);
 
-			Sort::BubbleSort(this->Points, (int)this->PointVector->size());
+
+			Algorithms::Sort::BubbleSort(this->Points, (int)this->PointVector->size());
 		}
 	};
 };

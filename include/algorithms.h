@@ -26,7 +26,7 @@ using namespace Cartesian2D;
 		{
 			Point* temp = point;
 
-			point = point1;
+			point = point1;	
 			point1 = temp;
 		}
 		
@@ -142,6 +142,5 @@ using namespace Cartesian2D;
 	int RandomAlgos::GetIndex(Point* point, vector<Point*>* pointArray, int arrayLength)
     {
         return Search::BinarySearch(point, pointArray, 0, arrayLength);
-    } 
-
+    }
 };

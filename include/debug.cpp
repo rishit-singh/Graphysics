@@ -25,10 +25,10 @@ public:
 		Pipe_Horizontal
 	};
 
-	static bool IsCoincident(Point* point, vector<Point*>* pointArray)
-	{
-		return (Search::BinarySearch(point, pointArray, 0, pointArray->size()) <= -1) ? false : true;
-	}
+		static bool IsCoincident(Point* point, vector<Point*>* pointArray)
+		{
+			return (Search::BinarySearch(point, pointArray, 0, pointArray->size()) <= -1) ? false : true;
+		}
 
 		// static bool IsCoincident(Point* point, Point** pointArray, int arrayLength)
 		// {

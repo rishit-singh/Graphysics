@@ -61,6 +61,5 @@ namespace CartesianObjects2D
             this->Coordinates = new Coordinate();
         }
     };
-};
-
+};  
         
