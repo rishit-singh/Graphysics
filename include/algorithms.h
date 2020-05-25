@@ -17,8 +17,7 @@ using namespace std;
 
 namespace Algorithms
 {
-#include "cartesian.h"
-using namespace Cartesian2D;
+	#include "cartesian.h"
 	class RandomAlgos
 	{
 	public:
