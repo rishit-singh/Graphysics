@@ -104,13 +104,14 @@ namespace Algorithms
 
 			if (end >= start)
 			{
-				if (!RandomAlgos::PointCmp(array->at(mid), val))
+				if (!RandomAlgos::PointCmp(val, array->at(mid)))
 					return mid;
 
-				if (RandomAlgos::PointCmp(array->at(mid),val) == -1)
-					return Search::BinarySearch(val, array, mid + 1, end);
-			
-				return Search::BinarySearch(val, array, start, mid - 1);
+				if (RandomAlgos::PointCmp(val, array->at(mid)) == 1)
+					return Search::BinarySearch(val, array, mid, end);
+				
+				if (RandomAlgos::PointCmp(val, array->at(mid)) == -1)			
+					return Search::BinarySearch(val, array, start, mid);
 			}
 			return -1;
 		}
