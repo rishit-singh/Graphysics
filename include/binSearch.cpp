@@ -13,10 +13,13 @@ using namespace Algorithms;
 int main()
 {
     Point* array[] = {
-        new Point(new Coordinate(0, 0), true),
-        new Point(new Coordinate(1, 0), true), 
-        new Point(new Coordinate(0, 1), true)
+        new Point(new Coordinate(1, 1), true),
+        new Point(new Coordinate(1, 1), true), 
+        new Point(new Coordinate(1, 1), true)
     };
+
+    Point* p = new Point();
+
 
     vector<Point*>* pointVector = new vector<Point*>();
 
@@ -24,7 +27,8 @@ int main()
 
     Sort::BubbleSort(pointVector);
 
-    cout << BinarySearch(new Point(), pointVector, 0, pointVector->size());
+
+    cout << BinarySearch(p, pointVector, 0, pointVector->size());
     
     return 0;
 }

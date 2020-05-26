@@ -1,15 +1,0 @@
---2020-04-26 20:35:15--  https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.unhcr.org%2Fgr%2Fwp-content%2Fuploads%2Fsites%2F10%2F2019%2F01%2Fpress_210119-1.jpg
-Resolving www.google.com (www.google.com)... 2404:6800:4002:80f::2004, 216.58.197.36
-Connecting to www.google.com (www.google.com)|2404:6800:4002:80f::2004|:443... connected.
-HTTP request sent, awaiting response... 301 Moved Permanently
-Location: https://www.google.com/imghp [following]
---2020-04-26 20:35:16--  https://www.google.com/imghp
-Reusing existing connection to [www.google.com]:443.
-HTTP request sent, awaiting response... 200 OK
-Length: unspecified [text/html]
-Saving to: ‘imgres?imgurl=https:%2F%2Fwww.unhcr.org%2Fgr%2Fwp-content%2Fuploads%2Fsites%2F10%2F2019%2F01%2Fpress_210119-1.jpg’
-
-                          imgres?imgurl=https:%2F%2F     [<=>                                                                                                                   ]       0  --.-KB/s               imgres?imgurl=https:%2F%2Fwww.unhcr.org%2Fgr%2Fwp-co     [ <=>                                                                                                                  ]   4.36K  --.-KB/s    in 0s      
-
-2020-04-26 20:35:16 (54.6 MB/s) - ‘imgres?imgurl=https:%2F%2Fwww.unhcr.org%2Fgr%2Fwp-content%2Fuploads%2Fsites%2F10%2F2019%2F01%2Fpress_210119-1.jpg’ saved [4461]
-
