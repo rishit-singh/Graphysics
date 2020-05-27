@@ -22,10 +22,10 @@ namespace Algorithms
 	public:
 		static void Swap(Point* point, Point* point1)
 		{
-			Point* temp = point;
+			Point temp = *point;
 
-			point = point1;	
-			point1 = temp;
+			*point = *point1;	
+			*point1 = temp;
 		}
 		
 		static void Swap(int* point, int* point1)
@@ -39,7 +39,7 @@ namespace Algorithms
 			// point = point1;
 			// point1 = temp;
 		}
-	    
+
 		static int GetIndex(Point* point, vector<Point*>* pointArray, int arrayLength);
 
 		static int PointCmp(Point* point, Point* point1)
@@ -52,6 +52,12 @@ namespace Algorithms
 				
 			return -1;
 		} 	
+
+		static void PrintVector(vector<Point*>* pointVector)
+		{
+			for (int x = 0; x < pointVector->size(); x++)
+				cout << "(" << pointVector->at(x)->Coordinates->X << ", " << pointVector->at(x)->Coordinates->Y << ") ";
+		}
 	};
 
 	class Sort
@@ -80,7 +86,7 @@ namespace Algorithms
 
 			for (int x = 0; x < (len = pointVector->size()) - 1; x++)
 				for (int y = 0; y <  len -  x - 1; y++)
-					if (RandomAlgos::PointCmp(pointVector->at(y), pointVector->at(y + 1)) >= 1)
+					if (RandomAlgos::PointCmp(pointVector->at(y), pointVector->at(y + 1)) > 0)
 						RandomAlgos::Swap(pointVector->at(y), pointVector->at(y + 1));
 
 		}
@@ -112,7 +118,8 @@ namespace Algorithms
 				
 				if (RandomAlgos::PointCmp(val, array->at(mid)) == -1)			
 					return Search::BinarySearch(val, array, start, mid);
-			}
+			}		
+
 			return -1;
 		}
 
