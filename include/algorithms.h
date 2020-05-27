@@ -6,6 +6,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
+#include <numeric>
+#include <limits>
+#include <cstdint>
 #include "ds.h"
 #include "cartesianobj.h"
 
@@ -51,7 +54,8 @@ namespace Algorithms
 				return 1;
 				
 			return -1;
-		} 	
+		} 
+
 
 		static void PrintVector(vector<Point*>* pointVector)
 		{
@@ -128,8 +132,8 @@ namespace Algorithms
 		{
 			if (end >= start)
 			{
-				int mid = start + end - start / 2;
-			// cout << "\n" << num++ << "Mid: " << mid;
+				int mid = end + (end - start) / 2;
+
 				cout << "called";
 	
 				if (array[mid] == val)
