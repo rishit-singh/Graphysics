@@ -46,7 +46,7 @@ namespace Algorithms
 		static int GetIndex(Point* point, vector<Point*>* pointArray, int arrayLength);
 
 		static int PointCmp(Point* point, Point* point1)
-		{
+		{	
 			if (point->Coordinates->Y == point1->Coordinates->Y && point->Coordinates->X == point1->Coordinates->X)
 				return 0;
 
@@ -54,7 +54,7 @@ namespace Algorithms
 				return 1;
 				
 			return -1;
-		} 
+		} 	
 
 
 		static void PrintVector(vector<Point*>* pointVector)

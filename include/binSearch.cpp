@@ -16,17 +16,25 @@ using namespace Algorithms;
 //int array[] = {1, 2, 3};
 //int array = new int[];
 
-int main()
+int main(int argc, char* argv[])
 {
-	Point* p = new Point(new Coordinate(1, 2));
+
+	if (argc < 1)
+	{
+		cout << "No arguements.";
+
+		return 0;
+	}
+
+	Point* p = new Point(new Coordinate(atoi(argv[1]), atoi(argv[2])));
 
 	vector<Point*>* pointVector = new vector<Point*>();
 
-	pointVector->assign(5, new Point()); 
+	pointVector->assign(5, new Point(new Coordinate(0, 1))); 
 
 	Sort::BubbleSort(pointVector); 
 
-    cout << BinarySearch(new Point(new Coordinate(1, 2)), pointVector, 0, pointVector->size()); //first call
+    cout << BinarySearch(p, pointVector, 0, pointVector->size() - 1); //first call
 
 	return 0;
 }
