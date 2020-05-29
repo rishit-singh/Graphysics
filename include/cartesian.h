@@ -27,8 +27,6 @@ using namespace Algorithms;
 
         vector<Point*>* GetPlotted()
         {
-			cout << "Vector size: " << this->PointVector->size(); 
-
 			vector<Point*>* plottedStack = new vector<Point*>();
 
             for (int x = 0; x < this->PointVector->size(); x++)
@@ -36,7 +34,7 @@ using namespace Algorithms;
 					plottedStack->push_back(this->PointVector->at(x));
 
 			return plottedStack;
-        }
+		}
 
 		Plane()
 		{

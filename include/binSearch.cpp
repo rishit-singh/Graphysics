@@ -52,7 +52,7 @@ int BinarySearch(Point* point, vector<Point*>* pointVector, int start, int end)
 		int mid = start + (end - start) / 2;
 
 		if (RandomAlgos::PointCmp(point, pointVector->at(mid)) == 0)
-			return mid;
+			return mid;	
 		
 		if (RandomAlgos::PointCmp(point, pointVector->at(mid)) > 0) // Mid + 1 to end
 			return BinarySearch(point, pointVector, mid + 1, end); 

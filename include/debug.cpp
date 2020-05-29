@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <vector>
+#include "algorithms.h"
 #include "cartesian.h"
 #include "cartesianobj.h"
 #include "ds.h"
@@ -27,7 +28,7 @@ public:
 
 		static bool IsCoincident(Point* point, vector<Point*>* pointArray)
 		{
-			return (Search::BinarySearch(point, pointArray, 0, pointArray->size()) <= -1) ? false : true;
+			return (Search::BinarySearch(point, pointArray, 0, pointArray->size() - 1) <= -1) ? false : true;
 		}
 
 		// static bool IsCoincident(Point* point, Point** pointArray, int arrayLength)
@@ -63,8 +64,6 @@ public:
 			{
 				if (!y && x == 11)
 					wcout << DrawingChars[1];
-				
-				wcout << "GetPlotted() val: ";//;<< plane->GetPlotted();
 
 				if (IsCoincident(new Point(new Coordinate(x, y)), plane->GetPlotted()))
 					wcout << DrawingChars[(int)DebugPlot::Point_Dot];

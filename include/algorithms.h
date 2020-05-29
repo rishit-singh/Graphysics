@@ -118,10 +118,10 @@ namespace Algorithms
 					return mid;
 
 				if (RandomAlgos::PointCmp(val, array->at(mid)) == 1)
-					return Search::BinarySearch(val, array, mid, end);
+					return Search::BinarySearch(val, array, mid + 1, end);
 				
 				if (RandomAlgos::PointCmp(val, array->at(mid)) == -1)			
-					return Search::BinarySearch(val, array, start, mid);
+					return Search::BinarySearch(val, array, start, mid - 1);
 			}		
 
 			return -1;
