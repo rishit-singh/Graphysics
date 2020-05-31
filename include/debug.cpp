@@ -26,10 +26,10 @@ public:
 		Pipe_Horizontal
 	};
 
-		static bool IsCoincident(Point* point, vector<Point*>* pointArray)
-		{
-			return (Search::BinarySearch(point, pointArray, 0, pointArray->size() - 1) <= -1) ? false : true;
-		}
+	static bool IsCoincident(Point* point, vector<Point*>* pointArray)
+	{
+		return (Search::BinarySearch(point, pointArray, 0, pointArray->size() - 1) <= -1) ? false : true;
+	}
 
 		// static bool IsCoincident(Point* point, Point** pointArray, int arrayLength)
 		// {
@@ -38,34 +38,42 @@ public:
 
 	static bool Plot(Plane* plane)
 	{
+		Coordinate* Max = new Coordinate(10, 10);
+
 		wchar_t* DrawingChars[] = {
 			L"\n   \u2191	",
-			L"<	\u2581",		
+			L"\u2192",		
 			L"\u25AA",
 			L"\u2595",
-			L"\u2581"
+			L"\u2015"
 		};
 
-		for (int y = 11; y > 0; y--)
-		{ 
-			if (y == 11)
+		for (int y = (Max->Y + 1); y > 0; y--)
+		{
+			if (y == 0)
+				wcout << "\n";
+			
+			if (y == (Max->X + 1))
 				wcout << "   " << DrawingChars[(int)DebugPlot::Arrow_Up];
 
 			wcout << "\n";
 			
-			if (y < 11)
-				wcout << ' ';
-			else 
+			if (y < (Max->X + 1))
+					wcout << ' ';
+			else 		
 				wcout << '\0';
 				
 			wcout << y - 1  << '-' << DrawingChars[(int)DebugPlot::Pipe_Vertical];
 
-			for (int x = 10; x >= 0; x--)
+			for (int x = 0; x <= (Max->X + 1); x++)
 			{
-				if (!y && x == 11)
-					wcout << DrawingChars[1];
+				if (y == 1 && x < (Max->X + 1))
+					wcout << DrawingChars[(int)DrawingChar::Pipe_Horizontal];
 
-				if (IsCoincident(new Point(new Coordinate(x, y)), plane->GetPlotted()))
+				if (y == 1 && x == (Max->X + 1))
+					wcout << DrawingChars[(int)DebugPlot::Arrow_Right];
+
+				if (IsCoincident(new Point(new Coordinate((x < 11) ? x : x - 1 , y - 1)), plane->GetPlotted()))
 					wcout << DrawingChars[(int)DebugPlot::Point_Dot];
 				else
 					wcout << " ";
@@ -153,11 +161,18 @@ public:
 	}
 };
 
-int main()
+int main(int argc, char* argv[])
 {
 	setlocale(LC_CTYPE, "");
-	
-	DebugPlot::Plot(new Plane(DebugPlot::GetVectorArray()));
+
+	// if (argc < 2)
+	// {
+	// 	wcout << "Insufficient arguements\n";
+	// }
+
+
+	DebugPlot::Plot(new Plane(DebugPlot::GetVectorArray())); //new Point(new Coordinate(atoi(argv[1]), atoi(argv[2])), (bool)atoi(argv[3]))));
 
 	return 0;
 }
+

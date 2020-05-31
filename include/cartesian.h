@@ -66,11 +66,10 @@ using namespace Algorithms;
 		{
 			this->PointVector = new vector<Point*>();
 
-		   	this->PointVector->push_back(point);
+		   	this->PointVector->push_back(point);	
 
 		   	this->Points = CPPVector::ToArray(this->PointVector);
-
-
+			   
 			Algorithms::Sort::BubbleSort(this->Points, (int)this->PointVector->size());
 		}
 	};
