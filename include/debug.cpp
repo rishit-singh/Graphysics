@@ -165,13 +165,12 @@ int main(int argc, char* argv[])
 {
 	setlocale(LC_CTYPE, "");
 
-	// if (argc < 2)
-	// {
-	// 	wcout << "Insufficient arguements\n";
-	// }
+	if (argc < 2)
+	{
+		wcout << "Insufficient arguements\n";
+	}
 
-
-	DebugPlot::Plot(new Plane(DebugPlot::GetVectorArray())); //new Point(new Coordinate(atoi(argv[1]), atoi(argv[2])), (bool)atoi(argv[3]))));
+	DebugPlot::Plot(new Plane(new Point(new Coordinate(atoi(argv[1]), atoi(argv[2])), (bool)atoi(argv[3]))));
 
 	return 0;
 }
