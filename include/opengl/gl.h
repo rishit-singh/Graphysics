@@ -22,7 +22,7 @@ namespace GraphicsLib
 		
 		WindowConfig(Vector2D* windowPosition, Vector2D* windowSize)
 		{ 
-			this->Title = "\0";
+			this->Title = "New Window"; // default title
 			this->WindowPosition = windowPosition;
 			this->WindowSize = windowSize;
 		}
