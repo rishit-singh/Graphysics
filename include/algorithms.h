@@ -62,6 +62,8 @@ namespace Algorithms
 			for (int x = 0; x < pointVector->size(); x++)
 				cout << "(" << pointVector->at(x)->Coordinates->X << ", " << pointVector->at(x)->Coordinates->Y << ") ";
 		}
+
+		static bool IsElement(Point* val, vector<Point*>* pointVector);
 	};
 
 	class Sort
@@ -153,4 +155,9 @@ namespace Algorithms
     {
         return Search::BinarySearch(point, pointArray, 0, arrayLength);
     }
+
+	bool RandomAlgos::IsElement(Point* val, vector<Point*>* pointVector)
+	{
+		return (Search::BinarySearch(val, pointVector, 0, pointVector->size() - 1) >= 0) ? true : false;
+	}
 };

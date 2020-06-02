@@ -14,7 +14,7 @@ namespace CartesianObjects2D
         int X, Y; //coordinates
 
         Coordinate()
-        { 
+        {
             this->X = 0;
             this->Y = 0;
         }

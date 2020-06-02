@@ -36,6 +36,18 @@ using namespace Algorithms;
 			return plottedStack;
 		}
 
+		void Plot(Point* point)
+		{
+			if (RandomAlgos::IsElement(point, this->PointVector))
+			{
+				point->plotStatus = Point::Plotted;
+				
+				PointVector->push_back(point);
+			}
+			else
+				cout << "(" << point->Coordinates->X << ", " << point->Coordinates->Y << ")" << " is already plotted.";
+		}
+
 		Plane()
 		{
 		}

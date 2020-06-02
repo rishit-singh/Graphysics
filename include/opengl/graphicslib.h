@@ -40,8 +40,6 @@ namespace GraphicsLib
 	class Renderer
 	{
 	public:
-		static vector<Point*>* Points;
-
 		static void Initialize(WindowConfig* windowConfig) 
 		{
 			glutInitWindowPosition(windowConfig->WindowPosition->X, windowConfig->WindowPosition->Y);
@@ -50,16 +48,12 @@ namespace GraphicsLib
 
 			glutDisplayFunc(Renderer::Render);
 		}
-		
-		static void Plot(vector<Point*>* points)
-		{
-			Renderer::Points = points;
-		}
 
 		static void Render()
 		{
 			int x = 0;	// loop counter
-			Point* temp = Renderer::Points->at(x); // for storing elements at an index of the vector.
+
+			vector<Point>* points = ;
 
 			glClear(GL_COLOR_BUFFER_BIT); 
 

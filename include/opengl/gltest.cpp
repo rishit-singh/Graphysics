@@ -13,7 +13,6 @@ using namespace Cartesian2D;
 using namespace CartesianObjects2D;
 using namespace GraphicsLib;
   
-
 vector<Point*>* GetPoints(); 
 
 int main(int argc, char* argv[])
