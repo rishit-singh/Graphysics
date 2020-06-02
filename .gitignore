@@ -1,1 +1,11 @@
-code.sh
+*.sh
+.compilenrun.py.swp
+include/opengl/test/
+include/test/
+include/.vscode/
+include/.extarray.py.swn
+include/.extarray.py.swo
+include/.extarray.py.swp
+include/.swp
+include/*.gch
+include/*.sh
