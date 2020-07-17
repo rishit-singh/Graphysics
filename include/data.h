@@ -12,10 +12,12 @@ namespace Data
     {
         int X, Y;
         
-        Vector2D(int x, int y)
-        {
-            this->X = x;
-            this->Y = y;
-        } 
+        // Vector2D(int x, int y)
+        // {
+        //     this->X = x;
+        //     this->Y = y;
+        // } 
+
+        Vector2D(int x, int y) : X(x), Y(y){}
     };
 };

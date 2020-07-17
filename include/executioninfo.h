@@ -10,7 +10,7 @@ using namespace Cartesian2D;
 
 namespace ExcecutionData
 {   
-    vector<Plane*>* Planes = new vector<Plane*>(); // for storing all the planes created while exceution. todo: Store this externally
+    vector<Plane*> Planes = vector<Plane*>(); // for storing all the planes created while exceution. todo: Store this externally
 
-    Plane* CurrentPlane; //gets updated after a plane is selected
+    Plane* CurrentPlane; //gets updated once a plane is selected
 };
