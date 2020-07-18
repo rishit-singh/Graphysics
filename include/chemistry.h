@@ -6,6 +6,7 @@
 #include <iostream>
 #include <math.h>
 #include <string>
+#include <stack>
 #include "environment.h"
 
 namespace ChemistyBasics
@@ -65,12 +66,12 @@ namespace InOrganic
 			IdealGas
 		}
 
-		static bool ObeysLaws(Gas gas,Environment::System system, )
+		static bool ObeysLaws(Gas gas, Environment::System system)
 		{
 			bool applicable = (gas.Volume != NULL || (system.physicalProperties.Pressure != NULL) ? true : false;
 			
 			if (applicable)
-				return 0; //for quick exit, just for now
+				cout << //for quick exit, just for now
 
 			return 0;
 		}

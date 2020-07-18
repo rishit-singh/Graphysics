@@ -8,10 +8,12 @@
 #include "../data.h"
 #include "../cartesianobj.h"
 #include "../cartesian.h"
+#include "../executioninfo.h"
 
 using namespace Data;
 using namespace Cartesian2D;
 using namespace CartesianObjects2D;
+using namespace ExecutionData;
 
 namespace GraphicsLib
 {
@@ -54,7 +56,7 @@ namespace GraphicsLib
 		{
 			int x = 0;	// loop counter
 
-			vector<Point> points = ExecutionData::CurrentPlane->PointVector;
+			vector<Point> points = CurrentPlane->PointVector;
 
 			Point temp; 	// temp for storing points
 
@@ -63,7 +65,7 @@ namespace GraphicsLib
 			glBegin(GL_POINT);
 
 			for (; x < points.size(); x++)
-				glVertex2d((temp = points[x]).Coordinates->X, temp.Coordinates->Y);
+				glVertex2d((temp = points[x]).Coordinates.X, temp.Coordinates.Y);
 			
 			glEnd();
 			

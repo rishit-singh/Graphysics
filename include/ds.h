@@ -16,16 +16,17 @@ namespace DataStructures
         class Stack
         {
         public:
-            static Point** ToArray(stack<Point*>* points)
+            static Point* ToArray(stack<Point> points)
             {
-                int stackSize = points->size(); //stack size temp 
+                int stackSize = points.size(); //stack size temp 
         
-                Point** pointsArray = (Point**)malloc(sizeof(Point*) * stackSize); //new Point*[stackSize];//(Point**)malloc(sizeof(Point*) * stackSize);
+                Point* pointsArray = new Point[stackSize];
 
                 for (int x = 0; x < stackSize; x++)
                 {
-                    pointsArray[x] = points->top(); //popped value is stored in the array.
-                    points->pop();
+                    pointsArray[x] = points.top(); //popped value is stored in the array.
+                   
+                    points.pop();
                 }
                 
                 return pointsArray;
@@ -35,14 +36,14 @@ namespace DataStructures
     class CPPVector
     {
     public: 
-        static Point** ToArray(vector<Point*>* point_vector)
+        static Point* ToArray(vector<Point> point_vector)
         {
-            int vectorSize = point_vector->size(); 
+            int vectorSize = point_vector.size(); 
 
-            Point** PointArray = new Point*[vectorSize];
+            Point* PointArray = new Point[vectorSize];
 
             for (int x = 0; x < vectorSize; x++)
-                PointArray[x] = point_vector->at(x);
+                PointArray[x] = point_vector.at(x);
 
             return PointArray;
         }
@@ -56,9 +57,9 @@ namespace DataStructures
             return sizeof(array) / sizeof(array[0]);
         }
 
-        static int GetLength(Point** array)
+        static int GetLength(Point* array)
         {
-            return sizeof(array) / sizeof(Point*);  
+            return sizeof(array) / sizeof(Point);  
         }
     };
 };

@@ -35,22 +35,22 @@ namespace CartesianObjects2D
             Hidden
         };
 
-        Coordinate* Coordinates; //coordinates, Poin (x, y)
+        Coordinate Coordinates; //coordinates, Poin (x, y)
         Point::PlotStatus plotStatus; 
 
-        Point(Coordinate* coordinates,  Point::PlotStatus plotstatus)
+        Point(Coordinate coordinates,  Point::PlotStatus plotstatus)
         {
             this->Coordinates = coordinates;
             this->plotStatus = plotstatus;
         }
         
-        Point(Coordinate* coordinates,  bool statusBool)
+        Point(Coordinate coordinates,  bool statusBool)
         {
             this->Coordinates = coordinates;
             this->plotStatus = (statusBool) ? Point::PlotStatus::Plotted : Point::PlotStatus::Hidden;
         }
         
-        Point(Coordinate* coordinates)
+        Point(Coordinate coordinates)
         {
             this->Coordinates = coordinates;
             this->plotStatus = plotStatus;
@@ -58,7 +58,7 @@ namespace CartesianObjects2D
 
         Point()
         { //a new point at the origin 
-            this->Coordinates = new Coordinate();
+            this->Coordinates = Coordinate();
         }
     };
 };  

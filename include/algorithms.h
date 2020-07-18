@@ -25,10 +25,10 @@ namespace Algorithms
 	public:
 		static void Swap(Point* point, Point* point1)
 		{
-			Point temp = *point;
+			Point* temp = point;
 
-			*point = *point1;	
-			*point1 = temp;
+			point = point1;	
+			point1 = temp;
 		}
 		
 		static void Swap(int* point, int* point1)
@@ -43,38 +43,39 @@ namespace Algorithms
 			// point1 = temp;
 		}
 
-		static int GetIndex(Point* point, vector<Point*>* pointArray, int arrayLength);
+		//	static declarations 
+		static int GetIndex(Point point, vector<Point> pointArray, int arrayLength);
+		static bool IsElement(Point val, vector<Point> pointVector);
 
-		static int PointCmp(Point* point, Point* point1)
+		static int PointCmp(Point point, Point point1)
 		{	
-			if (point->Coordinates->Y == point1->Coordinates->Y && point->Coordinates->X == point1->Coordinates->X)
+			if (point.Coordinates.Y == point1.Coordinates.Y && point.Coordinates.X == point1.Coordinates.X)
 				return 0;
 
-			if (point->Coordinates->Y > point1->Coordinates->Y)
+			if (point.Coordinates.Y > point1.Coordinates.Y)
 				return 1;
 				
 			return -1;
 		} 	
 
 
-		static void PrintVector(vector<Point*>* pointVector)
+		static void PrintVector(vector<Point> pointVector)
 		{
-			for (int x = 0; x < pointVector->size(); x++)
-				cout << "(" << pointVector->at(x)->Coordinates->X << ", " << pointVector->at(x)->Coordinates->Y << ") ";
+			for (int x = 0; x < pointVector.size(); x++)
+				cout << "(" << pointVector.at(x).Coordinates.X << ", " << pointVector.at(x).Coordinates.Y << ") ";
 		}
 
-		static bool IsElement(Point* val, vector<Point*>* pointVector);
 	};
 
 	class Sort
 	{
 	public:
-		static void BubbleSort(Point** array, int len)
+		static void BubbleSort(Point* array, int len)
 		{
 			for (int x = 0; x < len; x++)
 				for (int y = 0;  y < len - x - 1; x++)	
-					if (array[y]->Coordinates->Y > array[y + 1]->Coordinates->Y)
-						RandomAlgos::Swap(array[y], array[y + 1]);
+					if (array[y].Coordinates.Y > array[y + 1].Coordinates.Y)
+						RandomAlgos::Swap(&array[y], &array[y + 1]);
 						
 		}
 		
@@ -86,14 +87,14 @@ namespace Algorithms
 						RandomAlgos::Swap(array + y, array + (y + 1));	
 		} 
 
-		static void BubbleSort(vector<Point*>* pointVector)
+		static void BubbleSort(vector<Point> pointVector)
 		{
 			int len;
 
-			for (int x = 0; x < (len = pointVector->size()) - 1; x++)
+			for (int x = 0; x < (len = pointVector.size()) - 1; x++)
 				for (int y = 0; y <  len -  x - 1; y++)
-					if (RandomAlgos::PointCmp(pointVector->at(y), pointVector->at(y + 1)) > 0)
-						RandomAlgos::Swap(pointVector->at(y), pointVector->at(y + 1));
+					if (RandomAlgos::PointCmp(pointVector.at(y), pointVector.at(y + 1)) > 0)
+						RandomAlgos::Swap(&pointVector.at(y), &pointVector.at(y + 1));
 
 		}
 	};
@@ -101,28 +102,28 @@ namespace Algorithms
 	class Search
 	{	
 	public:
-		static int LinearSearch(Point* val, Point** array)
+		static int LinearSearch(Point val, Point* array)
 		{
 			for (int x = 0; x < Array::GetLength(array); x++)
-				if (val->Coordinates->X ==  array[x]->Coordinates->X && val->Coordinates->Y ==  array[x]->Coordinates->Y)
+				if (val.Coordinates.X ==  array[x].Coordinates.X && val.Coordinates.Y ==  array[x].Coordinates.Y)
 					return true;
 
 			return -1;
 		}
 
-		static int BinarySearch(Point* val, vector<Point*>* array, int start, int end)
+		static int BinarySearch(Point val, vector<Point> array, int start, int end)
 		{
 			int mid = start + end - start / 2;
 
 			if (end >= start)
 			{
-				if (!RandomAlgos::PointCmp(val, array->at(mid)))
+				if (!RandomAlgos::PointCmp(val, array.at(mid)))
 					return mid;
 
-				if (RandomAlgos::PointCmp(val, array->at(mid)) == 1)
+				if (RandomAlgos::PointCmp(val, array.at(mid)) == 1)
 					return Search::BinarySearch(val, array, mid + 1, end);
 				
-				if (RandomAlgos::PointCmp(val, array->at(mid)) == -1)			
+				if (RandomAlgos::PointCmp(val, array.at(mid)) == -1)			
 					return Search::BinarySearch(val, array, start, mid - 1);
 			}		
 
@@ -151,13 +152,13 @@ namespace Algorithms
 		}
 	};
 
-	int RandomAlgos::GetIndex(Point* point, vector<Point*>* pointArray, int arrayLength)
+	int RandomAlgos::GetIndex(Point point, vector<Point> pointArray, int arrayLength)
     {
         return Search::BinarySearch(point, pointArray, 0, arrayLength);
     }
 
-	bool RandomAlgos::IsElement(Point* val, vector<Point*>* pointVector)
+	bool RandomAlgos::IsElement(Point val, vector<Point> pointVector)
 	{
-		return (Search::BinarySearch(val, pointVector, 0, pointVector->size() - 1) >= 0) ? true : false;
+		return (Search::BinarySearch(val, pointVector, 0, pointVector.size() - 1) >= 0) ? true : false;
 	}
 };
