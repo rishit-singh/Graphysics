@@ -52,9 +52,7 @@ using namespace Algorithms;
 				cout << "(" << point.Coordinates.X << ", " << point.Coordinates.Y << ")" << " is already plotted.";
 		}
 
-		Plane()
-		{
-		}
+		Plane();
 
 		// Plane(Point** points) //array of points
 		// {

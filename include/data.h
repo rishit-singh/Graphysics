@@ -18,6 +18,6 @@ namespace Data
         //     this->Y = y;
         // } 
 
-        Vector2D(int x, int y) : X(x), Y(y){ }  // optimized contructor
+        Vector2D(int x, int y) : X(x), Y(y) { }  // optimized contructor
     };
 };

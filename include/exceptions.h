@@ -1,22 +1,23 @@
 #pragma once
 
 #include <string.h>
-#include "DSnAlgo/algorithms.h"
+#include "algorithms.h"
 
 #define EXCEPTIONS_H
 #define EXCEPTIONS_H
 
+#define MAX_MESSAGE_LENGTH 1000
 
 namespace ErrorHandler
 {
     class Exception
     {
     public:
-        char* Message; //Errot message
+        char* Message; //Error message
         
-        Exception(char* message) //
+        Exception(char* message) : Message(new char[MAX_MESSAGE_LENGTH])
         {
-            this->Type = type;
+            // this->Type = type
             strcpy(message, this->Message);
         }
     };
