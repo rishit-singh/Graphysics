@@ -6,9 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
-#include <numeric>
-#include <limits>
-#include <cstdint>
+#include "opengl/graphicslib.h"
 #include "ds.h"
 #include "cartesianobj.h"
 
@@ -30,6 +28,14 @@ namespace Algorithms
 			point = point1;	
 			point1 = temp;
 		}
+
+		static void Swap(GraphicsLib::GLPoint* point, GraphicsLib::GLPoint* point1)
+		{
+			GraphicsLib::GLPoint* temp = point;
+
+			point = point1;	
+			point1 = temp;
+		}
 		
 		static void Swap(int* point, int* point1)
 		{
@@ -46,6 +52,7 @@ namespace Algorithms
 		//	static declarations 
 		static int GetIndex(Point point, vector<Point> pointArray, int arrayLength);
 		static bool IsElement(Point val, vector<Point> pointVector);
+		static bool IsElement(GraphicsLib::GLPoint val, vector<GraphicsLib::GLPoint> pointVector);
 
 		static int PointCmp(Point point, Point point1)
 		{	
@@ -57,12 +64,28 @@ namespace Algorithms
 				
 			return -1;
 		} 	
+		
+		static int PointCmp(GraphicsLib::GLPoint point, GraphicsLib::GLPoint point1)
+		{	
+			if (point.Coordinates.Y == point1.Coordinates.Y && point.Coordinates.X == point1.Coordinates.X)
+				return 0;
 
+			if (point.Coordinates.Y > point1.Coordinates.Y)
+				return 1;
+				
+			return -1;
+		} 	
 
 		static void PrintVector(vector<Point> pointVector)
 		{
 			for (int x = 0; x < pointVector.size(); x++)
 				cout << "(" << pointVector.at(x).Coordinates.X << ", " << pointVector.at(x).Coordinates.Y << ") ";
+		}
+		
+		static void PrintVector(vector<GraphicsLib::GLPoint> pointVector)
+		{
+			for (int x = 0; x < pointVector.size(); x++)
+				cout << "(" << pointVector.at(x).Coordinates.X << ", " << pointVector.at(x).Coordinates.Y << ") " << "\n";
 		}
 
 	};
@@ -88,6 +111,17 @@ namespace Algorithms
 		} 
 
 		static void BubbleSort(vector<Point> pointVector)
+		{
+			int len;
+
+			for (int x = 0; x < (len = pointVector.size()) - 1; x++)
+				for (int y = 0; y <  len -  x - 1; y++)
+					if (RandomAlgos::PointCmp(pointVector.at(y), pointVector.at(y + 1)) > 0)
+						RandomAlgos::Swap(&pointVector.at(y), &pointVector.at(y + 1));
+
+		}
+		
+		static void BubbleSort(vector<GraphicsLib::GLPoint> pointVector)
 		{
 			int len;
 
@@ -129,6 +163,25 @@ namespace Algorithms
 
 			return -1;
 		}
+		
+		static int BinarySearch(GraphicsLib::GLPoint val, vector<GraphicsLib::GLPoint> array, int start, int end)
+		{
+			int mid = start + end - start / 2;
+
+				if (end >= start)
+				{
+					if (!RandomAlgos::PointCmp(val, array.at(mid)))
+					return mid;
+
+				if (RandomAlgos::PointCmp(val, array.at(mid)) == 1)
+					return Search::BinarySearch(val, array, mid + 1, end);
+				
+				if (RandomAlgos::PointCmp(val, array.at(mid)) == -1)			
+					return Search::BinarySearch(val, array, start, mid - 1);
+			}		
+
+			return -1;
+		}
 
 		
 		static int BinarySearch(int val, int* array, int start, int end)
@@ -158,6 +211,11 @@ namespace Algorithms
     }
 
 	bool RandomAlgos::IsElement(Point val, vector<Point> pointVector)
+	{
+		return (Search::BinarySearch(val, pointVector, 0, pointVector.size() - 1) >= 0) ? true : false;
+	}
+
+	bool RandomAlgos::IsElement(GraphicsLib::GLPoint val, vector<GraphicsLib::GLPoint> pointVector)
 	{
 		return (Search::BinarySearch(val, pointVector, 0, pointVector.size() - 1) >= 0) ? true : false;
 	}

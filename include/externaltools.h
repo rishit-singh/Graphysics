@@ -23,7 +23,7 @@ namespace ExternalTools
             if (strlen(text) > 1 || strlen(text) < 0)
                 return false;
 
-            fprintf(fopen(Files[(int)logType], 'w'), "%s",text);         
+            fprintf(fopen(Files[(int)logType], "w"), "%s",text);         
 		}  
 	};
 };

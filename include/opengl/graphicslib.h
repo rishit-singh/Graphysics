@@ -17,6 +17,33 @@ using namespace ExecutionData;
 
 namespace GraphicsLib
 {
+	class GLPoint
+	{
+	public:
+		Coordinate Coordinates;
+		
+		Point::PlotStatus plotStatus;
+
+		GLPoint(int x, int y) : Coordinates(x, y), plotStatus(Point::Hidden)
+		{
+		} 
+
+		GLPoint(int x, int y, Point::PlotStatus plotstatus) : Coordinates(x, y), plotStatus(plotStatus)
+		{
+		} 
+
+		GLPoint(Point point, Point::PlotStatus plotstatus) : Coordinates(point.Coordinates.X / 10, point.Coordinates.Y / 10), plotStatus(plotstatus)
+		{
+		}
+		
+		GLPoint(Point point) : Coordinates(point.Coordinates.X / 10, point.Coordinates.Y / 10), plotStatus(Point::Hidden)
+		{
+		}
+
+		GLPoint() : Coordinates(0, 0), plotStatus(Point::Hidden)
+		{}
+	};
+
 	class WindowConfig
 	{
 	public:
@@ -29,7 +56,6 @@ namespace GraphicsLib
 		{
 			// this->Title = title;
 			// this->WindowPosition = windowPosition;
-			// this->WindowSize = windowSize;
 		}
 		
 		WindowConfig(Vector2D windowPosition, Vector2D windowSize) : WindowPosition(WindowPosition), WindowSize(windowSize)
@@ -56,9 +82,9 @@ namespace GraphicsLib
 		{
 			int x = 0;	// loop counter
 
-			vector<Point> points = CurrentPlane->PointVector;
+			vector<GLPoint> points = CurrentPlane->PointVector;
 
-			Point temp; 	// temp for storing points
+			GLPoint temp; 	// temp for storing points
 
 			glClear(GL_COLOR_BUFFER_BIT); 
 

@@ -5,7 +5,7 @@
 
 #include <iostream>
 #include <stdlib.h>
-#include <string>
+#include <string.h>
 
 using namespace std;
 
@@ -25,7 +25,7 @@ namespace Environment
 		{
 			Name = new char[100];
 			this->physicalProperties = {
-				properties.Pressure, properties.Temprature;
+				properties.Pressure, properties.Temprature
 			};
 		}
 
@@ -47,7 +47,7 @@ namespace Environment
             strcpy(name, Name);
                         
 			this->physicalProperties = {
-                properties.Pressure, properties.Temprature;
+                properties.Pressure, properties.Temprature
             };
         }
                 

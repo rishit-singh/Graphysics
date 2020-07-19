@@ -47,6 +47,18 @@ namespace DataStructures
 
             return PointArray;
         }
+        
+        static GraphicsLib::GLPoint* ToArray(vector<GraphicsLib::GLPoint> point_vector)
+        {
+            int vectorSize = point_vector.size(); 
+
+            GraphicsLib::GLPoint* PointArray = new GraphicsLib::GLPoint[vectorSize];
+
+            for (int x = 0; x < vectorSize; x++)
+                PointArray[x] = point_vector.at(x);
+
+            return PointArray;
+        }
     };
 
     class Array

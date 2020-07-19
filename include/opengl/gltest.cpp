@@ -1,40 +1,36 @@
 #include <iostream>
 #include <vector>
-#include "../data.h"
-#include "../algorithms.h"
-#include "../cartesian.h"
 #include "../cartesianobj.h"
+#include "../cartesian.h"
 #include "graphicslib.h"
 
-using namespace std; 
-using namespace Data; 
-using namespace Algorithms;
-using namespace Cartesian2D;
+using namespace std;
 using namespace CartesianObjects2D;
+using namespace Cartesian2D;
 using namespace GraphicsLib;
-  
-vector<Point*>* GetPoints(); 
 
-int main(int argc, char* argv[])
+void Build();
+vector<GLPoint> Construct();
+
+int main()
 {
-	if (argc < 2)
-	{
-		cout << "Insufficient arguements.\n";
+	Renderer::Initialize(WindowConfig("Test Program", Vector2D(500, 500), Vector2D(600, 1000)));
 
-		return 0;
-	}
+	return 0;
+}
 
-	glutInit(&argc, argv);
-	
-	vector<Point*>* Points = new vector<Point*>();
+void Build()
+{
+	CurrentPlane = new Plane(Construct());
+}
 
-	Points->push_back(new Point(new Coordinate(atof(argv[1]), atof(argv[2]))));
-	
-	Renderer::Plot(Points);
+vector<GLPoint> Construct()
+{
+	vector<GLPoint> ConstructedVector = vector<GLPoint>();
 
-	Renderer::Initialize(new WindowConfig("GLTest", new Vector2D(100, 100), new Vector2D(1920, 1080)));
+	for (int x = 0; x < 3 x++)
+		for (int y = 0; y < 3; y++)
+			ConstructedVector.push_back(GLPoint(x, y));
 
-	glutMainLoop();
-
-	return 0; 
+	return ConstructedVector;
 }

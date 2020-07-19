@@ -68,7 +68,7 @@ namespace InOrganic
 
 		static bool ObeysLaws(Gas gas, Environment::System system)
 		{
-			bool applicable = (gas.Volume != NULL || (system.physicalProperties.Pressure != NULL) ? true : false;
+			bool applicable = (gas.Volume != NULL || (system.physicalProperties.Pressure != NULL) ? true : false);
 			
 			if (applicable)
 				cout << "This gas obeys the laws.";//for quick exit, just for now;

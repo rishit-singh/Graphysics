@@ -3,6 +3,7 @@ DSnAlgo/
 *.sh
 .compilenrun.py.swp
 include/opengl/test/
+include/opengl/*.cpp
 include/test/
 include/.vscode/
 include/.extarray.py.swn
