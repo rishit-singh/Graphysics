@@ -8,10 +8,7 @@
 #include <vector>
 #include "ds.h"
 #include "cartesianobj.h"
-
-#ifndef GRAPHICLIB_H
 #include "opengl/graphicslib.h"
-#endif 
 
 using namespace DataStructures;
 using namespace CartesianObjects2D;
@@ -23,7 +20,8 @@ namespace Algorithms
 	class RandomAlgos
 	{
 	public:
-		static void Swap(Point* point, Point* point1)
+	template<typename T>
+		static void Swap(T* point,T* point1)
 		{
 			Point* temp = point;
 
@@ -31,43 +29,15 @@ namespace Algorithms
 			point1 = temp;
 		}
 
-		static void Swap(GraphicsLib::GLPoint* point, GraphicsLib::GLPoint* point1)
-		{
-			GraphicsLib::GLPoint* temp = point;
-
-			point = point1;	
-			point1 = temp;
-		}
-		
-		static void Swap(int* point, int* point1)
-		{
-			int temp = *point;
-
-			*point = *point1;
-			*point1 = temp;
-			// int* temp = point;
-
-			// point = point1;
-			// point1 = temp;
-		}
-
 		//	static declarations 
 		static int GetIndex(Point point, vector<Point> pointArray, int arrayLength);
-		static bool IsElement(Point val, vector<Point> pointVector);
-		static bool IsElement(GraphicsLib::GLPoint val, vector<GraphicsLib::GLPoint> pointVector);
-
-		static int PointCmp(Point point, Point point1)
-		{	
-			if (point.Coordinates.Y == point1.Coordinates.Y && point.Coordinates.X == point1.Coordinates.X)
-				return 0;
-
-			if (point.Coordinates.Y > point1.Coordinates.Y)
-				return 1;
-				
-			return -1;
-		} 	
 		
-		static int PointCmp(GraphicsLib::GLPoint point, GraphicsLib::GLPoint point1)
+		template<typename T>
+		static bool IsElement(T val, vector<T> pointVector);
+
+
+		template<typename T> 		
+		static int PointCmp(T point, T point1)
 		{	
 			if (point.Coordinates.Y == point1.Coordinates.Y && point.Coordinates.X == point1.Coordinates.X)
 				return 0;
@@ -119,7 +89,7 @@ namespace Algorithms
 			for (int x = 0; x < (len = pointVector.size()) - 1; x++)
 				for (int y = 0; y <  len -  x - 1; y++)
 					if (RandomAlgos::PointCmp(pointVector.at(y), pointVector.at(y + 1)) > 0)
-						RandomAlgos::Swap(&pointVector.at(y), &pointVector.at(y + 1));
+						RandomAlgos::Swap<Point>(&pointVector.at(y), &pointVector.at(y + 1));
 
 		}
 		
@@ -130,7 +100,7 @@ namespace Algorithms
 			for (int x = 0; x < (len = pointVector.size()) - 1; x++)
 				for (int y = 0; y <  len -  x - 1; y++)
 					if (RandomAlgos::PointCmp(pointVector.at(y), pointVector.at(y + 1)) > 0)
-						RandomAlgos::Swap(&pointVector.at(y), &pointVector.at(y + 1));
+						RandomAlgos::Swap<GraphicsLib::GLPoint>(&pointVector.at(y), &pointVector.at(y + 1));
 
 		}
 	};
@@ -210,15 +180,11 @@ namespace Algorithms
 	int RandomAlgos::GetIndex(Point point, vector<Point> pointArray, int arrayLength)
     {
         return Search::BinarySearch(point, pointArray, 0, arrayLength);
-    }
-
-	bool RandomAlgos::IsElement(Point val, vector<Point> pointVector)
+	}
+	
+	template<typename T>
+	bool RandomAlgos::IsElement(T val, vector<T> pointVector)
 	{
 		return (Search::BinarySearch(val, pointVector, 0, pointVector.size() - 1) >= 0) ? true : false;
 	}
-
-	bool RandomAlgos::IsElement(GraphicsLib::GLPoint val, vector<GraphicsLib::GLPoint> pointVector)
-	{
-		return (Search::BinarySearch(val, pointVector, 0, pointVector.size() - 1) >= 0) ? true : false;
-	}
-};
+}

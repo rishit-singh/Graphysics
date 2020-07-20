@@ -9,6 +9,7 @@
 #include <vector>
 #include "ds.h"	
 #include "cartesianobj.h"
+
 #include "opengl/graphicslib.h"
 
 #ifndef ALGORITHMS_H
@@ -66,14 +67,14 @@ using namespace Algorithms;
 		// 	this->Points = Stack::ToArray(PointStack); // +1 for the value recieved by next contructor i.e. Plane(Point* point)
 		// }  
 		
-		Plane(vector<Point> points) : PointVector(vector<GraphicsLib::GLPoint>()) //array of points
+		Plane(vector<GraphicsLib::GLPoint> points) : PointVector(vector<GraphicsLib::GLPoint>()) //array of points
 		{
 			// this->PointVector = vector<Point>();
 
 			for (int x = 0; x < points.size(); x++)
 			 	this->PointVector.push_back(points.at(x));
 	
-			// this->Points = CPPVector::ToArray(points); // +1 for the value recieved by next contructor i.e. Plane(Point* point)
+			this->Points = CPPVector::ToArray<GraphicsLib::GLPoint>(points); // +1 for the value recieved by next contructor i.e. Plane(Point* point)
 
 			// Sort::BubbleSort(this->Points, (int)this->PointVector->size());
 		}  
@@ -82,9 +83,9 @@ using namespace Algorithms;
 		{
 			// this->PointVector = vector<Point*>();
 
-		   	this->PointVector.push_back(point);	
+		   	this->PointVector.push_back(GraphicsLib::GLPoint(point));	
 
-		   	this->GLPoints = CPPVector::ToArray(this->PointVector);
+		   	this->GLPoints = CPPVector::ToArray<GraphicsLib::GLPoint>(this->PointVector);
 			   
 			Algorithms::Sort::BubbleSort(this->Points, (int)this->PointVector.size());
 		}
