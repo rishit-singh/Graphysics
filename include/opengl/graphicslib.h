@@ -17,9 +17,8 @@ using namespace ExecutionData;
 
 namespace GraphicsLib
 {
-	class GLPoint
+	struct GLPoint
 	{
-	public:
 		Coordinate Coordinates;
 		
 		Point::PlotStatus plotStatus;

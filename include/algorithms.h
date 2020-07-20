@@ -6,10 +6,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
-#include "opengl/graphicslib.h"
 #include "ds.h"
 #include "cartesianobj.h"
 
+#ifndef GRAPHICLIB_H
+#include "opengl/graphicslib.h"
+#endif 
 
 using namespace DataStructures;
 using namespace CartesianObjects2D;

@@ -44,7 +44,7 @@ using namespace Algorithms;
 
 		void Plot(Point point)
 		{
-			if (RandomAlgos::IsElement(point, this->PointVector))
+			if (RandomAlgos::IsElement(GraphicsLib::GLPoint(point), this->PointVector))
 			{
 				point.plotStatus = Point::Plotted;
 				
