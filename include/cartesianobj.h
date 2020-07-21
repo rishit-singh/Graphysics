@@ -8,7 +8,7 @@
 
 namespace CartesianObjects2D
 {
-    class Coordinate
+    struct Coordinate
     {  
     public:
         int X, Y; //coordinates
@@ -26,7 +26,7 @@ namespace CartesianObjects2D
         }
     };
 
-    class Point
+    struct Point
     {
     public:
         enum PlotStatus
@@ -62,5 +62,32 @@ namespace CartesianObjects2D
             // this->Coordinates = Coordinate();
         }
     };
+
+    struct GLPoint
+	{
+		Coordinate Coordinates;
+		
+		Point::PlotStatus plotStatus;
+
+		GLPoint(int x, int y) : Coordinates(x, y), plotStatus(Point::Hidden)
+		{
+		} 
+
+		GLPoint(int x, int y, Point::PlotStatus plotstatus) : Coordinates(x, y), plotStatus(plotStatus)
+		{
+		} 
+
+		GLPoint(Point point, Point::PlotStatus plotstatus) : Coordinates(point.Coordinates.X / 10, point.Coordinates.Y / 10), plotStatus(plotstatus)
+		{
+		}
+		
+		GLPoint(Point point) : Coordinates(point.Coordinates.X / 10, point.Coordinates.Y / 10), plotStatus(Point::Hidden)
+		{
+		}
+
+		GLPoint() : Coordinates(0, 0), plotStatus(Point::Hidden)
+		{}
+	};
+
 };  
         

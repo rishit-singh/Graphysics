@@ -10,7 +10,9 @@
 #include "ds.h"	
 #include "cartesianobj.h"
 
+#ifndef GRAPHICSLIB_H
 #include "opengl/graphicslib.h"
+#endif
 
 #ifndef ALGORITHMS_H
 #include "algorithms.h"
@@ -28,13 +30,13 @@ using namespace Algorithms;
 	class Plane
 	{
 	public:
-		vector<GraphicsLib::GLPoint> PointVector;	//for storing the points in a stack
+		vector<GLPoint> PointVector;	//for storing the points in a stack
 		Point* Points;
-		GraphicsLib::GLPoint* GLPoints;
+		GLPoint* GLPoints;
 
-        vector<GraphicsLib::GLPoint> GetPlotted()
+        vector<GLPoint> GetPlotted()
         {
-			vector<GraphicsLib::GLPoint> plottedStack = vector<GraphicsLib::GLPoint>();
+			vector<GLPoint> plottedStack = vector<GLPoint>();
 
             for (int x = 0; x < this->PointVector.size(); x++)
 				if (this->PointVector.at(x).plotStatus == Point::Plotted)
@@ -45,11 +47,11 @@ using namespace Algorithms;
 
 		void Plot(Point point)
 		{
-			if (RandomAlgos::IsElement(GraphicsLib::GLPoint(point), this->PointVector))
+			if (RandomAlgos::IsElement(GLPoint(point), this->PointVector))
 			{
 				point.plotStatus = Point::Plotted;
 				
-				PointVector.push_back(GraphicsLib::GLPoint(point));
+				PointVector.push_back(GLPoint(point));
 			}
 			else
 				cout << "(" << point.Coordinates.X << ", " << point.Coordinates.Y << ")" << " is already plotted.";
@@ -67,25 +69,25 @@ using namespace Algorithms;
 		// 	this->Points = Stack::ToArray(PointStack); // +1 for the value recieved by next contructor i.e. Plane(Point* point)
 		// }  
 		
-		Plane(vector<GraphicsLib::GLPoint> points) : PointVector(vector<GraphicsLib::GLPoint>()) //array of points
+		Plane(vector<GLPoint> points) : PointVector(vector<GLPoint>()) //array of points
 		{
 			// this->PointVector = vector<Point>();
 
 			for (int x = 0; x < points.size(); x++)
 			 	this->PointVector.push_back(points.at(x));
 	
-			this->Points = CPPVector::ToArray<GraphicsLib::GLPoint>(points); // +1 for the value recieved by next contructor i.e. Plane(Point* point)
-
+			this->Points = Convert::GLVectorToPointArray(points); 
+			
 			// Sort::BubbleSort(this->Points, (int)this->PointVector->size());
 		}  
 		
-		Plane(Point point) : PointVector(vector<GraphicsLib::GLPoint>())
+		Plane(Point point) : PointVector(vector<GLPoint>())
 		{
 			// this->PointVector = vector<Point*>();
 
-		   	this->PointVector.push_back(GraphicsLib::GLPoint(point));	
+		   	this->PointVector.push_back(GLPoint(point));	
 
-		   	this->GLPoints = CPPVector::ToArray<GraphicsLib::GLPoint>(this->PointVector);
+		   	this->GLPoints = Convert::VectorToGLPointArray(this->PointVector);	
 			   
 			Algorithms::Sort::BubbleSort(this->Points, (int)this->PointVector.size());
 		}

@@ -10,6 +10,7 @@ using namespace Cartesian2D;
 using namespace GraphicsLib;
 
 void Build();
+		
 vector<GLPoint> Construct();
 
 int main()

@@ -37,7 +37,7 @@ namespace DataStructures
     {
     public:
         template<typename T>    // template created for unified use of the function for both Point and GLPoint
-        static T* ToArray(vector<T> point_vector)   //  Converts a std::vector<T> to a T array.
+        static Point* ToArray(vector<T> point_vector)   //  Converts a std::vector<T> to a T array.
         {
             int vectorSize = point_vector.size(); 
 

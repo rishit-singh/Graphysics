@@ -12,6 +12,7 @@
 
 using namespace DataStructures;
 using namespace CartesianObjects2D;
+using namespace GraphicsLib;
 using namespace std;
 
 
@@ -54,7 +55,7 @@ namespace Algorithms
 				cout << "(" << pointVector.at(x).Coordinates.X << ", " << pointVector.at(x).Coordinates.Y << ") ";
 		}
 		
-		static void PrintVector(vector<GraphicsLib::GLPoint> pointVector)
+		static void PrintVector(vector<GLPoint> pointVector)
 		{
 			for (int x = 0; x < pointVector.size(); x++)
 				cout << "(" << pointVector.at(x).Coordinates.X << ", " << pointVector.at(x).Coordinates.Y << ") " << "\n";
@@ -93,14 +94,14 @@ namespace Algorithms
 
 		}
 		
-		static void BubbleSort(vector<GraphicsLib::GLPoint> pointVector)
+		static void BubbleSort(vector<GLPoint> pointVector)
 		{
 			int len;
 
 			for (int x = 0; x < (len = pointVector.size()) - 1; x++)
 				for (int y = 0; y <  len -  x - 1; y++)
 					if (RandomAlgos::PointCmp(pointVector.at(y), pointVector.at(y + 1)) > 0)
-						RandomAlgos::Swap<GraphicsLib::GLPoint>(&pointVector.at(y), &pointVector.at(y + 1));
+						RandomAlgos::Swap< GLPoint>(&pointVector.at(y), &pointVector.at(y + 1));
 
 		}
 	};
@@ -136,7 +137,7 @@ namespace Algorithms
 			return -1;
 		}
 		
-		static int BinarySearch(GraphicsLib::GLPoint val, vector<GraphicsLib::GLPoint> array, int start, int end)
+		static int BinarySearch(GLPoint val, vector<GLPoint> array, int start, int end)
 		{
 			int mid = start + end - start / 2;
 
@@ -174,6 +175,60 @@ namespace Algorithms
 			}
 
 			return -1;
+		}
+	};
+
+	class Convert
+	{
+	public:
+		static Point* VectorToPointArray(vector<Point> pointVector)	// converts vector<Point> to a Point array
+		{
+			int vectorSize; // temp to store pointVector size
+
+			Point* pointArray = new Point[(vectorSize = pointVector.size())]; 
+
+			for (int x = 0; x < vectorSize; x++)
+				pointArray[x] = pointVector.at(x);
+
+			return pointArray;
+		}
+
+		static GLPoint* VectorToGLPointArray(vector<Point> pointVector)	// converts vector<Point> to a Point array
+		{
+			int vectorSize;	// temp to store pointVector size
+
+			GLPoint* glPointArray = new GLPoint[pointVector.size()];
+			
+			for (int x = 0; x < vectorSize; x++)
+				glPointArray[x] = pointVector.at(x);
+
+			return glPointArray;
+		}
+		
+		static Point* GLVectorToPointArray(vector<GLPoint> pointVector)	// converts vector<GLPoint> to a Point array
+		{
+			int vectorSize; // temp to store pointVector size
+
+			GLPoint pointTemp; 	
+			Point* pointArray = new Point[(vectorSize = pointVector.size())]; 
+
+
+			for (int x = 0; x < vectorSize; x++)
+				pointArray[x] = Point((pointTemp = pointVector.at(x)).Coordinates, pointTemp.plotStatus);	// assigns pointArray[x] to a Point with Coordinates same as the GLPoint 
+
+			return pointArray;
+		}
+		
+		static GLPoint* VectorToGLPointArray(vector<GLPoint> pointVector) // converts vector<GLPoint> to a GLPoint array
+		{
+			int vectorSize; // temp to store pointVector size
+
+			GLPoint* pointArray = new GLPoint[(vectorSize = pointVector.size())]; 
+
+			for (int x = 0; x < vectorSize; x++)
+				pointArray[x] = pointVector.at(x);
+
+			return pointArray;
 		}
 	};
 
