@@ -1,0 +1,3 @@
+[submodule "dependencies/GLEngine"]
+	path = dependencies/GLEngine
+	url = https://www.github.com/Refael10ru/GLEngine.git
